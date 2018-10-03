@@ -14,3 +14,22 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware' => ['auth', 'role:admin']], function () {
+    Route::get('/dosen', function () {
+        return view('dosen.index');
+    });
+});
+Route::group(['middleware' => ['auth', 'role:user']], function () {
+    Route::get('/mahasiswa', function () {
+        return view('mahasiswa.index');
+    });
+});
+
+Route::get('/master', function(){
+    return view('layouts/master');
+});
