@@ -19,12 +19,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['middleware' => ['auth', 'role:admin']], function () {
+Route::group(['middleware' => ['auth', 'role:dosen']], function () {
     Route::get('/dosen', function () {
         return view('dosen.index');
     });
 });
-Route::group(['middleware' => ['auth', 'role:user']], function () {
+Route::group(['middleware' => ['auth', 'role:mhs']], function () {
     Route::get('/mahasiswa', function () {
         return view('mahasiswa.index');
     });
@@ -32,4 +32,15 @@ Route::group(['middleware' => ['auth', 'role:user']], function () {
 
 Route::get('/master', function(){
     return view('layouts/master');
+});
+
+Route::resource('/course', 'CourseController');
+
+Route::get('tesapi', function(){
+    $url = url('api/datacourse');
+    $contents = file_get_contents($url);
+    $datas = json_decode($contents);
+    dd($datas);
+
+    return view('course');
 });

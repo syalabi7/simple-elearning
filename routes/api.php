@@ -16,3 +16,14 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('datacourse', function(){
+    $data = [
+        0 => [
+            'title' => "tes",
+            'body' => "tos"
+        ],
+    ];
+
+    return json_encode($data);
+});
