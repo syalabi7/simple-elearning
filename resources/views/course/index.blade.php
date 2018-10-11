@@ -4,14 +4,15 @@
 <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">My Course</h1>
-            <a href="#" class="btn btn-primary">+ Create Course</a><br><br>
+            <a href="{{ route('course.create') }}" class="btn btn-primary">+ Create Course</a><br><br>
         </div>
 </div>
 <div class="row">
+    @foreach($courses as $course)
     <div class="col-md-6">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Nama Kursus
+                {{ $course->name }}
                 <ul class="pull-right panel-settings panel-button-tab-right">
                     <li class="dropdown">
                         <a class="pull-right dropdown-toggle" data-toggle="dropdown" href="#">
@@ -21,13 +22,13 @@
                             <li>
                                 <ul class="dropdown-settings">
                                     <li><a href="#">
-                                        <em class="fa fa-pencil"></em> Edit this course
-                                    </a></li>
+                                            <em class="fa fa-pencil"></em> Edit this course
+                                        </a></li>
                                 </ul>
                                 <ul class="dropdown-settings">
                                     <li><a href="#">
-                                        <em class="fa fa-trash"></em> Delete this course
-                                    </a></li>
+                                            <em class="fa fa-trash"></em> Delete this course
+                                        </a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -44,7 +45,7 @@
                                 <div class="medium">2018</div>
                             </div>
                             <div class="col-xs-10 col-md-10">
-                                <h4>Durasi</h4>
+                                <h4>{{ $course->duration }}</h4>
                                 <h4>Oleh: Prof. Dr. Orang Pinter, S.Kom</h4>
                                 <a href="#" class="btn btn-primary right">View Course</a>
                             </div>
@@ -55,7 +56,8 @@
             </div>
         </div>
     </div>
-
+    @endforeach
 </div>
-@stop
+
+@endsection
 

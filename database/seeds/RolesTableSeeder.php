@@ -16,14 +16,14 @@ class RolesTableSeeder extends Seeder
         //add role
         $roles = [
             [
-                'name' => 'admin',
-                'display_name' => 'Administration',
-                'description' => 'Only one and only admin',
+                'name' => 'lecturer',
+                'display_name' => 'Lecturer',
+                'description' => 'Only lecturer can access',
             ],
             [
-                'name' => 'user',
-                'display_name' => 'Registed User',
-                'description' => 'Access for registed user',
+                'name' => 'students',
+                'display_name' => 'Students',
+                'description' => 'Access for students',
             ],
         ];
         foreach ($roles as $key => $value) {
@@ -32,14 +32,14 @@ class RolesTableSeeder extends Seeder
         //add user
         $users = [
             [
-                'name' => 'admin1',
-                'email' => 'admin1@local.local',
-                'password' => bcrypt('admin1'),
+                'name' => 'dosen1',
+                'email' => 'dosen1@local.local',
+                'password' => bcrypt('dosen1'),
             ],
             [
-                'name' => 'user1',
-                'email' => 'user1@local.local',
-                'password' => bcrypt('user1'),
+                'name' => 'mahasiswa1',
+                'email' => 'mahasiswa1@local.local',
+                'password' => bcrypt('mahasiswa1'),
             ],
         ];
         $n=1;

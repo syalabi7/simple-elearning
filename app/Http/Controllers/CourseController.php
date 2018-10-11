@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Course;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +19,9 @@ class CourseController extends Controller
      */
     public function index()
     {
-        return view('course.index');
+        $courses = Course::all();
+
+        return view('course.index', ['courses' => $courses]);
     }
 
     /**
@@ -34,7 +42,14 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $course = new Course();
+        $course->name = $request->coursename;
+        $course->duration = $request->duration;
+        $course->description = $request->description;
+
+        $course->save();
+
+        return redirect()->route('course.index');
     }
 
     /**
